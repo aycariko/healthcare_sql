@@ -105,16 +105,24 @@ def open_medical_record_form():
     disease_entry = customtkinter.CTkEntry(master=form, placeholder_text="Diseases")
     disease_entry.pack(pady=10)
 
-    date_of_examination_entry = customtkinter.CTkEntry(master=form, placeholder_text="Date of Examination")
+    date_of_examination_entry = customtkinter.CTkEntry(master=form, placeholder_text="Date of Examination (YYYY-MM-DD)")
     date_of_examination_entry.pack(pady=10)
 
     patient_id_entry = customtkinter.CTkEntry(master=form, placeholder_text="Patient ID")
     patient_id_entry.pack(pady=10)
 
-    submit_button = customtkinter.CTkButton(master=form, text="Submit", command=lambda: insert_medical_record(doctor_id_entry.get(), record_id_entry.get(), drugs_entry.get(), disease_entry.get(), date_of_examination_entry.get() ,patient_id_entry.get()))
+    submit_button = customtkinter.CTkButton(master=form, text="Submit", command=lambda: insert_medical_record(
+        record_id_entry.get(),
+        patient_id_entry.get(),
+        doctor_id_entry.get(),
+        date_of_examination_entry.get(),
+        drugs_entry.get(),
+        disease_entry.get()
+    ))
     submit_button.pack(pady=20)
 
     form.mainloop()
+
 
 """def display_data(option):
     data = get_data(option)
@@ -273,6 +281,5 @@ hospital_login_button = customtkinter.CTkButton(master=frame, text="Hospital Log
 hospital_login_button.pack(pady=10)
 
 root.mainloop()
-
 
 
